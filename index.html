@@ -12,11 +12,10 @@
 <div><strong>First things first</strong>: What is <em>geographic data</em>?</div>
 <div>Geographic data represents <strong>things that have a location</strong>.</div>
 <div>This can include <strong>physical</strong> things like <em>roads</em>, <em>rivers</em>, and <em>cities</em>.</div>
-<div><img src="./images/lyzimap-4.png" />OMG flood zones</div>
+<div class="center"><img src="./images/lyzimap-4.png" />OMG flood zones</div>
 <div>It can also include <strong>ephemeral</strong> phenomena, like <em>rainfall rates</em>, <em>911 calls</em>, and <em>weather patterns</em>.</div>
-<div><img src="./images/us_precip.gif" />OMG annual precipitation</div>
+<div class="center"><img src="./images/us_precip.gif" />OMG annual precipitation</div>
 <div>Geographic data can also capture <strong>nuances</strong> of locations, like the <em>degree of slope</em> at a specific location on the side of a mountain.</div>
-<div>(But we'll get to that.)</div>
 <div>How do we <strong>use</strong> geographic data?</div>
 <div>Typically, geographic data is used for two things: <em>visualization</em> and <em>analysis</em>.</div>
 <div class="center imageText"><img src="./images/analysis.png" />Analysis!</div>
@@ -30,31 +29,93 @@
 <div class="center imageText"><img src="./images/dem.jpg" />Rasters!</div>
 <div class="center imageText"><img src="./images/massachusetts.png" />Vectors!</div>
 <div>I am most often working with <strong>vector</strong> data, so let's start there.</div>
+<div>Vector geo data has <em>three</em> things: <strong>geometry</strong>, a <strong>location</strong>, and <strong>attribute information</strong>.</div>
 <div>One <em>super common</em> geographic data format is the <a href="http://en.wikipedia.org/wiki/Shapefile">shapefile</a>.</div>
 <div><strong>Shapefile</strong> is actually a misnomer: the data format requires <em>three different files</em> to store its core data (plus some <strong>optional</strong> files).</div>
-<div>Let's take a look at a shapefile. Head over to <a href="http://bit.ly/orgeo">http://bit.ly /orgeo</a> and download the Cities shapefile.</div>
+<div>Let's take a look at a shapefile. Head over to <a href="http://bit.ly/orgeo">http://bit.ly/orgeo</a> and download the Cities shapefile.</div>
 <div class="imageText"><img src="./images/orgeo.png" />http://bit.ly /orgeo</div>
 <div>Clicking the link should have downloaded <em>cities.zip</em>. <strong>Extract</strong> that to a folder and <em>take a look</em> at the files in it.</div>
 <div>There are two files that are <strong>unrelated</strong> to the shapefile: the PDF file and the HTML file. We can <em>ignore</em> those for now.</div>
 <div>There are <strong>four</strong> other files in the folder: a <em>dbf</em>, a <em>prj</em>, a <em>shp</em>, and a <em>shx</em>.</div>
+<div>The <strong>three mandatory</strong> files are the <em>dbf</em>, the <em>shp</em>, and the <em>shx</em>.</div>
 <div>Open up the <strong>dbf</strong> file in a text editor.</div>
-<div class="imageText"><img src="./images/dbf.png" />It should look something like this.</div>
+<div class="imageText" style="color:rgb(31, 189, 31)"><img src="./images/dbf.png" />It should look something like this.</div>
 <div>The <em>dbf</em> contains the <strong>attribute</strong> information for the dataset, with different values for each feature.</div>
 <div>Now open up the <strong>prj</strong> file in a text editor.</div>
-<div class="imageText"><img src="./images/prj.png" />It should look something like this.</div>
+<div class="imageText" style="color:rgb(31, 189, 31)"><img src="./images/prj.png" />It should look something like this.</div>
 <div>The <em>prj</em> contains the <strong>projection</strong> information for the dataset.</div>
 <div>(<em>Projections</em> deserve their own discussion. :-P)</div>
 <div>We can skip the <em>shx</em> file. It is an <strong>index</strong> file to allow quick seeking within the file.</div>
 <div>Ah, now to the <strong>shp</strong> file!</div>
 <div>If you have <em>QGIS</em> or <em>ArcGIS</em> installed on your machine, open up the <strong>cities.shp</strong> file.</div>
-<div>(If you don't, just look up here!)</div>
+<div><strong>(If you don't, just look up here!)</strong></div>
 <div class="imageText"><img src="./images/cities-qgis.png" />This is what the data looks like.</div>
+<div>The <strong>shp</strong> file contains the dataset's <em>geometry</em> information. (Points, lines, polygons, etc).</div>
 <div>Open the <em>attribute table</em> for cities.</div>
 <div class="imageText"><img src="./images/cities-table.png" />The <strong>dbf</strong> file generates this table of information.</div>
 <div>Check out the <em>properties</em> of the <strong>cities</strong> file, and take a look at the <em>projection</em> (or <em>coordinate reference system</em>).</div>
 <div class="imageText"><img src="./images/cities-crs.png" />The <strong>prj</strong> file generates the coordinate reference system / projection.</div>
 <div><em>Shapefiles</em> can be used with most <strong>desktop GIS</strong> and <strong>spatial analysis</strong> tools.</div>
-<div><em>Shapefiles</em> are <em>not</em> used in web maps.</div>
+<div><em>Shapefiles</em> are <strong>not</strong> used in web maps.</div>
+<div>Another <em>extremely</em> popular geographic data format is <a href="http://geojson.org">GeoJSON</a>.</div>
+<div class="imageText"><img src="./images/geojson.png" />GeoJSON is very popular for use in <strong>web maps</strong>.</div>
+<div>Let's look at some <em>GeoJSON</em>!</div>
+<div>Head to <a href="http://bit.ly/maptimegj">http://bit.ly/maptimegj</a></div>
+<div class="imageText"><img src="./images/maptime-gj.png" />This is a <strong>map</strong> displaying the data in the <em>maptimes.geojson</em> file. Click on the <strong>Raw</strong> button.</div>
+<div class="imageText"><img src="./images/maptimegj-raw.png" />This is what <strong>GeoJSON</strong> looks like!</div>
+<div><em>GeoJSON</em> is an extension of a format called <a href="http://json.org">JSON</a>, which stands for <strong>JavaScript Object Notation</strong>.</div>
+<div>Because <em>GeoJSON</em> is basically just <strong>JavaScript</strong>, it can easily be used in <em>web maps</em>!</div>
+<div class="imageText"><img src="./images/leaflet-gj.png" />For example, Leaflet loves GeoJSON.</div>
+<div>GeoJSON has some <strong>required attributes</strong>. GeoJSON features need a <em>type</em>, <em>geometry</em>, and <em>properties</em>.</div>
+<div>To learn more about GeoJSON's specificities, check out <a href="http://github.com/lyzidiamond/learn-geojson">Learn GeoJSON</a>. <strong>#shamelessplug</strong></div>
+<div>In a future <a href="http://github.com/maptime">Maptime exercise</a> we will work on putting GeoJSON files on web maps. <strong>:)</strong></div>
+<div>Another format: <a href="https://developers.google.com/kml/documentation/kml_tut">KML</a>.</div>
+<div><strong>KML</strong> stands for <em>Keyhole Markup Language</em>. It is a file format from <strong>Google</strong> for use in <em>Google Earth</em> and <em>Google Maps</em>.</div>
+<div>KML stores data in a <strong>tag-based</strong> format. This is similar to <em>GeoJSON</em>, except GeoJSON uses <strong>key-value pairs</strong> instead.</div>
+<div class="imageText" style="color:rgb(31, 189, 31)"><img src="./images/kml.png">This is what KML looks like.</div>
+<div>Head over to <a href="http://bit.ly/basickml">http://bit.ly/basickml</a> and play around with different types of <em>KML</em> files.</div>
+<div>There are many many other types of geographic vector data, but one last one I'd like to mention here is none other than <strong>OpenStreetMap</strong>.</div>
+<div class="imageText"><img src="./images/osm.png" />Maptime LOVES OpenStreetMap!</div>
+<div>Head to <a href="http://osm.org">http://osm.org</a> and click <em>Export</em> at the top.</div>
+<div class="imageText"><img src="./images/osm-export.png" />Zoom in, select a <strong>very small</strong> area, and click <em>Export</em>.</div>
+<div>A file called <strong>map.osm</strong> should download. <em>Open</em> it in a text editor.</div>
+<div class="imageText" style="color:rgb(31, 189, 31)"><img src="./images/osm-data.png" />It should look ike this.</div>
+<div>OSM data is sort of like KML, but has <strong>different information</strong>.</div>
+<div>It contains a <em>node id</em>, <em>changeset number</em>, <em>user</em>, and of course <em>latitude</em> and <em>longitude</em>, among other info.</div>
+<div>Let's quickly talk about <strong>raster data</strong>.</div>
+<div>Like <em>vector</em> data, <em>raster</em> data contains <strong>location</strong>. But it stores its <em>attribute information</em> differently.</div>
+<div>Raster data stores its information in its <em>pixels</em>. This information can include <em>height</em>, <em>slope</em>, <em>direction</em>, <em>color</em>, and many others.</div>
+<div>As far as <strong>formats</strong>, a very popular one is the <em>GeoTIFF</em>.</div>
+<div><img src="./images/geotiff.jpg" />OMG GeoTIFF</div>
+<div>A <strong>GeoTIFF</strong> is simply a <em>TIFF</em> (tagged image file format) file that <strong>maintains location information</strong>.</div>
+<div>The most typical uses for <em>rasters</em> in a <strong>geographic</strong> context are <em>digital elevation models</em> and <em>aerial photography</em>. These can be used to make other things, too.</div>
+<div class="imageText"><img src="./images/hillshade.jpg" />One example: digital elevation models can be interpolated to make hillshades.</div>
+<div>Just as many <strong>spatial problems</strong> can be solved with <em>raster</em> data as <em>vector</em> data. <strong>What are some of them?</strong></div>
+<div><strong>Homework:</strong>Check out <a href="http://opentopography.org">OpenTopography at http://opentopography.org</a> and take a look at some <em>elevation</em> data.</div>
+<div>In addition to <strong>rasters</strong> and <strong>vectors</strong>, there's one other <em>very popular</em> geo data type.</div>
+<div><img src="./images/csv.png" /><strong>Tables!</strong></div>
+<div>Geographic data is <em>very commonly</em> stored in tables of various types.</div>
+<div>These include <strong>CSV</strong>, <strong>Excel</strong>, <strong>Google Spreadsheets</strong>, and many others.</div>
+<div><em>What are some places you might find tabular geographic data?</em></div>
+<div><strong>Tabular data</strong> can be <em>geocoded</em> to be displayed on a map.</div>
+<div>(Geocoding also deserves its own conversation.)</div>
+<div>There are <a href="http://en.wikipedia.org/wiki/GIS_file_formats">many more</a> formats than the ones we just talked about.</div>
+<div>There's the <strong>file geodatabase</strong>, <a href="https://github.com/mbostock/topojson">TopoJSON</a>, <a href="http://postgis.net">PostGIS</a>, <a href="https://www.gaia-gis.it/fossil/libspatialite/index">SpatiaLite</a>, <a href="http://en.wikipedia.org/wiki/Well-known_text">Well-known Text</a>, <a href="http://en.wikipedia.org/wiki/Web_Feature_Service">Web Feature Service</a>, and even more.</div>
+<div>(If you're going to poke around, check out <strong>PostGIS</strong> first. <em>Super</em> powerful.)</div>
+<div>Much of the work in geo these days requires some <em>data transformation</em>.</div>
+<div>There are <strong>many tools</strong> that allow for transformation, including <a href="http://qgis.org">QGIS</a>, <a href="http://gdal.org">GDAL</a>, and <a href="http://gdal.org/ogr2ogr">OGR2OGR</a>, among others.</div>
+<div><em>What did we learn today?</em></div>
+<div>Geographic data exists in a <strong>variety</strong> of formats.</div>
+<div><em>Shapefiles</em> are commonly used for <strong>spatial analysis</strong> and <strong>visualization</strong> on your <em>desktop</em>.</div>
+<div><em>GeoJSON</em> and <em>KML</em> are commonly used for <strong>web maps</strong>.</div>
+<div>You can <em>download</em> vector data from <strong>OpenStreetMap</strong>!</div>
+<div>There are <em>lots</em> of places on the internet to find <strong>geographic data</strong>.</div>
+<div>Heck yes!</div>
+<div>Just knowing about <strong>these few</strong> data types can make you a <em>very strong</em> geographic data user.</div>
+<div><strong>YOU'RE A CHAMPION!</strong> Keep learning more!</div>
+<div>Thanks.</div>
+<div>Lyzi Diamond, @lyzidiamond, lyzidiamond.com</div>
+
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
